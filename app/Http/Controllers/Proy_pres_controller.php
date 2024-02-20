@@ -28,12 +28,6 @@ class Proy_pres_controller extends Controller
         return view('proy_pres.index', compact('proy_pres_t', 'ingresos_t', 'gastos_t', 'diferencia'));
     }
 
-    public function calculo(){
-
-        
-        return view('tu-vista')->with('diferencia', $diferencia);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
