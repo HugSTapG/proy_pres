@@ -1,6 +1,6 @@
 <html>
     <body>
-        <h1>Crear Nuevo Registro</h1>
+        <h1>Crear Nuevo Registro de Ingreso</h1>
 
         <form action="{{ route('ingresos.store') }}" method="post"> 
             @csrf
