@@ -20,7 +20,18 @@ class Proy_pres_controller extends Controller
         $proy_pres_t = DB::table('proy_pres_t')->get();
         $ingresos_t = DB::table('ingresos_t')->get();
         $gastos_t = DB::table('gastos_t')->get();
-        return view('proy_pres.index', compact('proy_pres_t', 'ingresos_t', 'gastos_t'));
+
+        $sumingresos = DB::table('ingresos_t')->sum('Ingresos_v');
+        $sumgastos = DB::table('gastos_t')->sum('Gastos_v');
+        $diferencia = $sumingresos - $sumgastos;
+
+        return view('proy_pres.index', compact('proy_pres_t', 'ingresos_t', 'gastos_t', 'diferencia'));
+    }
+
+    public function calculo(){
+
+        
+        return view('tu-vista')->with('diferencia', $diferencia);
     }
 
     /**

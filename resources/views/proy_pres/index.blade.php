@@ -49,6 +49,10 @@
                     </ul>
                 </div>
             </div>
+            <p>
+                Presupuesto Total: 
+                <text disabled="yes">{{ $diferencia }}</text>
+            </p>
         </div>
     </body>
 </html>
