@@ -2,8 +2,8 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label for="body">Gastos</label>
-        <textarea class="form-control" id="Gastos" name="Gastos" rows="3" required>{{ $gastos->Gastos }}</textarea>
+        <label for="Gastos">Gastos</label>
+        <input type="number" class="form-control" id="Gastos_v" name="Gastos_v" value="{{ $gastos->Gastos_v }}" required>
     </div>
     <button type="submit" class="btn mt-3 btn-primary">Update</button>
 </form>

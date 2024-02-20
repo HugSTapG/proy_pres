@@ -11,5 +11,5 @@
         <p><strong>Ingresos:</strong> {{ $proy_pres->Ingresos }}</p>
         <p><strong>Gastos:</strong> {{ $proy_pres->Gastos }}</p>
     </div>
-</body>
+</body>1
 </html>

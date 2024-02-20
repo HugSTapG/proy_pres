@@ -64,7 +64,8 @@ class Gastos_controller extends Controller
      */
     public function edit($id)
     {
-        //
+        $gastos = Gastos::find($id);
+        return view('gastos.edit', compact('gastos'));
     }
 
     /**
@@ -76,7 +77,14 @@ class Gastos_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'Gastos_v' => 'required|numeric',
+        ]);
+        
+        $gastos = Gastos::find($id);
+        $gastos->update($request->all());
+        return redirect()->route('proy_pres.index')
+                        ->with('success','Post updated successfully');
     }
 
     /**
@@ -87,6 +95,9 @@ class Gastos_controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gastos = Gastos::find($id);
+        $gastos-> delete();
+        return redirect()->route('proy_pres.index')
+                        ->with('success','User deleted successfully');
     }
 }

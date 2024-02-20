@@ -2,8 +2,8 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label for="title">Ingresos</label>
-        <input type="text" class="form-control" id="Ingresos" name="Ingresos" value="{{ $ingresos->Ingresos }}" required>
+        <label for="Ingresos">Ingresos</label>
+        <input type="number" class="form-control" id="Ingresos_v" name="Ingresos_v" value="{{ $ingresos->Ingresos_v }}" required>
     </div>
     <button type="submit" class="btn mt-3 btn-primary">Update</button>
 </form>

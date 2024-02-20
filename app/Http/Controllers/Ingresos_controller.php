@@ -64,7 +64,8 @@ class Ingresos_controller extends Controller
      */
     public function edit($id)
     {
-        //
+        $ingresos = Ingresos::find($id);
+        return view('ingresos.edit', compact('ingresos'));
     }
 
     /**
@@ -76,7 +77,14 @@ class Ingresos_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'Ingresos_v' => 'required|numeric',
+        ]);
+        
+        $ingresos = Ingresos::find($id);
+        $ingresos->update($request->all());
+        return redirect()->route('proy_pres.index')
+                        ->with('success','Post updated successfully');
     }
 
     /**
