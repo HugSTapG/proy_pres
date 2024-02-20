@@ -14,8 +14,7 @@ class Gastos_controller extends Controller
      */
     public function index()
     {
-        $gastos_t = DB::table('gastos_t')->get();
-        return view('proy_pres.index', ['gastos_t' => $gastos_t]);
+        //
     }
 
     /**

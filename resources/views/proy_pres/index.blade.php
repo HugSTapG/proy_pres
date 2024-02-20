@@ -9,19 +9,19 @@
                 <a href="{{ route('gastos.create') }}">Crear Gastos</a>
             </div>
         </div>
-        @foreach ($proy_pres_t as $proy_pres)
-            <ul>
-                <a href="{{ route('proy_pres.show', $proy_pres->id) }}">
-                    <p><strong>{{$proy_pres->Ingresos}}</strong></p>
-                </a>
-                <p>{{$proy_pres->Gastos}}</p>
-            </ul>
-            <a href="{{ route('proy_pres.edit',  $proy_pres->id)}}"><button type="submit">Editar</button></a>
-            <form action="{{ route('proy_pres.destroy', $proy_pres->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Borrar</button>
-            </form>
-        @endforeach
+        
+        <h2>Ingresos:</h2>
+        <ul>
+            @foreach ($ingresos_t as $ingreso)
+                <li>{{ $ingreso->Ingresos_v }}</li>
+            @endforeach
+        </ul>
+        
+        <h2>Gastos:</h2>
+        <ul>
+            @foreach ($gastos_t as $gasto)
+                <li>{{ $gasto->Gastos_v }}</li>
+            @endforeach
+        </ul>
     </body>
 </html>

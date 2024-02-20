@@ -18,7 +18,9 @@ class Proy_pres_controller extends Controller
     public function index()
     {
         $proy_pres_t = DB::table('proy_pres_t')->get();
-        return view('proy_pres.index', ['proy_pres_t' => $proy_pres_t]);
+        $ingresos_t = DB::table('ingresos_t')->get();
+        $gastos_t = DB::table('gastos_t')->get();
+        return view('proy_pres.index', compact('proy_pres_t', 'ingresos_t', 'gastos_t'));
     }
 
     /**
