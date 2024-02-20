@@ -1,7 +1,14 @@
 <html>
     <body>
         <h1>Practica</h1>
-        <a href="{{ route('proy_pres.create') }}">Crear Nuevo</a>
+        <div class="button-container">
+            <div class="button-wrapper">
+                <a href="{{ route('ingresos.create') }}">Crear Ingresos</a>
+            </div>
+            <div class="button-wrapper">
+                <a href="{{ route('gastos.create') }}">Crear Gastos</a>
+            </div>
+        </div>
         @foreach ($proy_pres_t as $proy_pres)
             <ul>
                 <a href="{{ route('proy_pres.show', $proy_pres->id) }}">

@@ -1,0 +1,24 @@
+.button-container {
+    display: flex;
+}
+
+.button-wrapper {
+    border: 1px solid black;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.data-container {
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.data-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.data-container button {
+    margin-top: 5px;
+}

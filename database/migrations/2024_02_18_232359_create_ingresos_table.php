@@ -13,7 +13,7 @@ class CreateIngresosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingresos', function (Blueprint $table) {
+        Schema::create('ingresos_t', function (Blueprint $table) {
             $table->id();
             $table->float('Ingresos_v');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateIngresosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingresos');
+        Schema::dropIfExists('ingresos_t');
     }
 }

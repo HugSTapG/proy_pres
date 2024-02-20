@@ -13,7 +13,7 @@ class CreateGastosTable extends Migration
      */
     public function up()
     {
-        Schema::create('gastos', function (Blueprint $table) {
+        Schema::create('gastos_t', function (Blueprint $table) {
             $table->id();
             $table->float('Gastos_v');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateGastosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gastos');
+        Schema::dropIfExists('gastos_t');
     }
 }
