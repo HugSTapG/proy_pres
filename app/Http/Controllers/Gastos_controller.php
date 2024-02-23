@@ -54,7 +54,7 @@ class Gastos_controller extends Controller
     public function show($id)
     {
         $gastos = Gastos::find($id);
-        return view('gastos.show', compact('ingresos'));
+        return view('gastos.show', compact('gastos'));
     }
 
     /**
@@ -63,10 +63,12 @@ class Gastos_controller extends Controller
      * @param  \App\Models\Gastos  $gastos
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gastos $gastos)
     {
-        $gastos = Gastos::find($id);
-        return view('gastos.edit', compact('ingresos'));
+        //$gastos = Gastos::find($id);
+        //return view('gastos.edit', compact('gastos'));
+
+        return view('gastos.edit', ['gastos' => $gastos->id]);
     }
 
     /**
@@ -76,15 +78,14 @@ class Gastos_controller extends Controller
      * @param  \App\Models\Gastos  $gastos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Gastos $gastos, Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'Gastos_v' => 'required|max:255',
         ]);
-        $gastos = Gastos::find($id);
-        $gastos->update($request->all());
-        return redirect()->route('gastos.index')
-          ->with('success', 'Gastos updated successfully.');
+        
+        $gastos->update($data);
+        return redirect()->route('proy_pres.index') ->with('success', 'Gastos updated successfully.');
     }
 
     /**
@@ -93,11 +94,9 @@ class Gastos_controller extends Controller
      * @param  \App\Models\Gastos  $gastos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Gastos $gastos)
     {
-        $gastos = Gastos::find($id);
-        $gastos-> delete();
-        return redirect()->route('proy_pres.index')
-                        ->with('success','Gastos deleted successfully');
+        $gastos->delete();
+        return redirect(route('proy_pres.index'))->with('success', 'Gastos deleted Succesffully');
     }
 }
