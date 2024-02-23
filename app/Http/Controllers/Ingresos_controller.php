@@ -76,15 +76,16 @@ class Ingresos_controller extends Controller
      * @param  \App\Models\Ingresos  $ingresos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Ingresos $ingresos, Request $request)
     {
-        $request->validate([
-            'Ingresos_v' => 'required|max:255',
+        $data = $request->validate([
+            'Ingresos_v' => 'required',
         ]);
-        $ingresos = Ingresos::find($id);
-        $ingresos->update($request->all());
-        return redirect()->route('ingresos.index')
-          ->with('success', 'Ingresos updated successfully.');
+
+        
+        $ingresos->update($data);
+
+        return redirect()->route('proy_pres.index')->with('success', 'Ingresos updated successfully.');
     }
 
     /**
@@ -93,11 +94,9 @@ class Ingresos_controller extends Controller
      * @param  \App\Models\Ingresos  $ingresos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ingresos $ingresos)
     {
-        $ingresos = Ingresos::find($id);
-        $ingresos-> delete();
-        return redirect()->route('proy_pres.index')
-                        ->with('success','User deleted successfully');
+        $ingresos->delete();
+        return redirect(route('proy_pres.index'))->with('success', 'Ingresos deleted Succesffully');
     }
 }
