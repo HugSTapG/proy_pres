@@ -51,9 +51,10 @@ class Gastos_controller extends Controller
      * @param  \App\Models\Gastos  $gastos
      * @return \Illuminate\Http\Response
      */
-    public function show(Gastos $gastos)
+    public function show($id)
     {
-        //
+        $gastos = Gastos::find($id);
+        return view('gastos.show', compact('ingresos'));
     }
 
     /**
@@ -78,13 +79,12 @@ class Gastos_controller extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'Gastos_v' => 'required|numeric',
+            'Gastos_v' => 'required|max:255',
         ]);
-        
         $gastos = Gastos::find($id);
         $gastos->update($request->all());
-        return redirect()->route('proy_pres.index')
-                        ->with('success','Post updated successfully');
+        return redirect()->route('gastos.index')
+          ->with('success', 'Gastos updated successfully.');
     }
 
     /**
@@ -98,6 +98,6 @@ class Gastos_controller extends Controller
         $gastos = Gastos::find($id);
         $gastos-> delete();
         return redirect()->route('proy_pres.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Gastos deleted successfully');
     }
 }
