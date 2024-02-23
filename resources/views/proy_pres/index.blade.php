@@ -6,7 +6,7 @@
 
         <div class="secundario">
 
-            <h1>Practica</h1>
+            <h1>Sistema Contable</h1>
             <div class="button-container">
                 <div class="button-wrapper">
                     <a href="{{ route('ingresos.create') }}">Crear Ingresos</a>
@@ -18,7 +18,9 @@
             
             <div class="data-container">
                 <div class="data-wrapper">
-                    <h2>Ingresos:</h2>
+                    <div class="button-wrapper">
+                        <a href="{{ route('ingresos.index') }}">Ingresos</a>
+                    </div>
                     <ul class="list-wrapper">
                         @foreach ($ingresos_t as $ingresos)
                             <ul class="list-wrapper_c">
@@ -33,7 +35,9 @@
                     @endforeach
                 </div>
                 <div class="data-wrapper">
-                    <h2>Gastos:</h2>
+                    <div class="button-wrapper">
+                        <a href="{{ route('gastos.index') }}">Gastos</a>
+                    </div>
                     <ul class="list-wrapper">
                         @foreach ($gastos_t as $gastos)
                             <ul class="list-wrapper_c">

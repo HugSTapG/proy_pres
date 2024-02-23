@@ -54,7 +54,7 @@ class Gastos_controller extends Controller
     public function show($id)
     {
         $gastos = Gastos::find($id);
-        return view('gastos.show', compact('ingresos'));
+        return view('gastos.show', compact('gastos'));
     }
 
     /**
