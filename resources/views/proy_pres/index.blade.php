@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,100 +9,88 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
   <title>Practica</title>
 </head>
 <body>
-        <h1>Practica</h1>
-        <div class="button-container">
-            <div class="button-wrapper">
-                <a href="{{ route('ingresos.create') }}">Crear Ingresos</a>
-            </div>
-            <div class="button-wrapper">
-                <a href="{{ route('gastos.create') }}">Crear Gastos</a>
-            </div>
+    <h1>Practica</h1>
+    <div class="button-container">
+        <div class="button-wrapper">
+            <a href="{{ route('ingresos.create') }}">Crear Ingresos</a>
         </div>
-        
-        <h2>Ingresos:</h2>
-        <table border="1">
+        <div class="button-wrapper">
+            <a href="{{ route('gastos.create') }}">Crear Gastos</a>
+        </div>
+    </div>
+    
+    <h2>Ingresos:</h2>
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>Ingreso</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach ($ingresos_t as $ingresos)
             <tr>
-                <th>ID</th>
-                <th>Ingreso</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <td>{{ $ingresos->id }}</td>
+                <td>{{ $ingresos->Ingresos_v }}</td>
+                <td>
+                    <a href="{{route('ingresos.edit', ['ingresos' => $ingresos->id])}}">Edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{route('ingresos.destroy', ['ingresos' => $ingresos->id])}}">
+                        @csrf 
+                        @method('delete')
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
             </tr>
-            @foreach ($ingresos_t as $ingresos)
-                <tr>
-                    <td>{{ $ingresos->id }}</td>
-                    <td>{{ $ingresos->Ingresos_v }}</td>
-                    <td>
-                        <a href="{{route('ingresos.update', ['ingresos' => $ingresos->id])}}">Edit</a>
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('ingresos.destroy', ['ingresos' => $ingresos->id])}}">
-                            @csrf 
-                            @method('delete')
-                            <input type="submit" value="Delete" />
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-        <br/> 
-        <h2>Gastos:</h2>
-        <table border="1">
+        @endforeach
+    </table>
+    <br/> 
+    <h2>Gastos:</h2>
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>Gasto</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach ($gastos_t as $gastos)
             <tr>
-                <th>ID</th>
-                <th>Gasto</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <td>{{ $gastos->id }}</td>
+                <td>{{ $gastos->Gastos_v }}</td>
+                <td>
+                    <a href="{{route('gastos.edit', ['gastos' => $gastos->id])}}">Edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{route('gastos.destroy', ['gastos' => $gastos->id])}}">
+                        @csrf 
+                        @method('delete')
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
             </tr>
-            @foreach ($gastos_t as $gastos)
-                <tr>
-                    <td>{{ $gastos->id }}</td>
-                    <td>{{ $gastos->Gastos_v }}</td>
-                    <td>
-                        <a href="">Edit</a>
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('gastos.destroy', ['gastos' => $gastos->id])}}">
-                            @csrf 
-                            @method('delete')
-                            <input type="submit" value="Delete" />
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-    </body>
+        @endforeach
+    </table>
+    <br/>
+
+   
+    @php
+        $totalIngresos = 0;
+        foreach ($ingresos_t as $ingresos) {
+            $totalIngresos += $ingresos->Ingresos_v;
+        }
+
+        $totalGastos = 0;
+        foreach ($gastos_t as $gastos) {
+            $totalGastos += $gastos->Gastos_v;
+        }
+
+        $diferencia = $totalIngresos - $totalGastos;
+    @endphp
+
+    <h2>Diferencia entre Ingresos y Gastos:</h2>
+    <p>Total de Ingresos: {{ $totalIngresos }}</p>
+    <p>Total de Gastos: {{ $totalGastos }}</p>
+    <p>Diferencia: {{ $diferencia }}</p>
+
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -79,8 +79,9 @@ class Ingresos_controller extends Controller
     public function update(Ingresos $ingresos, Request $request)
     {
         $data = $request->validate([
-            'Ingresos_v' => 'required|numeric',
+            'Ingresos_v' => 'required',
         ]);
+
         
         $ingresos->update($data);
 

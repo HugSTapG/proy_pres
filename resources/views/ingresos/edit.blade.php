@@ -9,12 +9,24 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
   <title>Practica</title>
 </head>
 <body>
+    <div>
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+
+
+        @endif
+    </div>
     <form method="post" action="{{ route('ingresos.update', ['ingresos' => $ingresos->id]) }}"> 
         @csrf 
         @method('PUT')
         <div class="form-group">
             <label for="title">Ingresos</label>
-            <input type="text" class="form-control" id="Ingresos" name="Ingresos" value="{{ $ingresos->ingresos_v }}" required>
+            <input type="text" class="form-control" id="Ingresos_v" name="Ingresos_v" value="{{ $ingresos->Ingresos_v }}" required>
+
         </div>
         <button type="submit" class="btn mt-3 btn-primary">Update</button>
     </form>

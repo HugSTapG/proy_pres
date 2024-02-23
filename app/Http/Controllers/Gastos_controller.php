@@ -63,12 +63,12 @@ class Gastos_controller extends Controller
      * @param  \App\Models\Gastos  $gastos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gastos $gastos)
+    public function edit($id)
     {
-        //$gastos = Gastos::find($id);
-        //return view('gastos.edit', compact('gastos'));
+        $gastos = Gastos::find($id);
+        return view('gastos.edit', compact('gastos'));
 
-        return view('gastos.edit', ['gastos' => $gastos->id]);
+        //return view('gastos.edit', ['gastos' => $gastos->id]);
     }
 
     /**

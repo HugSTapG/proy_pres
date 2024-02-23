@@ -1,8 +1,3 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +14,7 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
     @method('PUT')
     <div class="form-group">
         <label for="body">Gastos</label>
-        <textarea class="form-control" id="Gastos" name="Gastos" rows="3" required>{{ $gastos->Gastos }}</textarea>
+        <input type="text" class="form-control" id="Gastos_v" name="Gastos_v" value="{{ $gastos->Gastos_v }}" required>
     </div>
     <button type="submit" class="btn mt-3 btn-primary">Update Gasto</button>
 </form>
